@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trip-viewer-trips
+  labels:  
+    app: trip-viewer-trips
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trip-viewer-trips
+  template:
+    metadata:
+      labels:
+        app: trip-viewer-trips
+    spec:
+      containers:
+      - name: trip-viewer-trps
+        image: registryski3694.azurecr.io/tripinsights/trips:1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
